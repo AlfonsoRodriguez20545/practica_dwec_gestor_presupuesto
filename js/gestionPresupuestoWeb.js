@@ -66,7 +66,10 @@ function mostrarGastoWeb(idElemento, gasto){
     
     let botonCargarGastos = document.getElementById("cargar-gastos");
     botonCargarGastos.addEventListener('click',new cargarGastosWeb);
-
+    if(idElemento == "listado-gastos-completo"){
+        divGasto.append(btnEditar);
+        divGasto.append(btnBorrar);
+    }
     let cargarApi = document.getElementById("cargar-gastos-api");
     //cargarApi.addEventListener('click',new cargarGastosApi);
     //if(idElemento == "listado-gastos-completo"){
