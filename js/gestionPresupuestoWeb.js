@@ -430,7 +430,6 @@ function GastoPut(){
             //this.gasto.borrarEtiquetas(this.formulario.elements.etiquetas.value);
             let eticqForm = new Array();
             eticqForm = this.formulario.elements.etiquetas.value.split(",");
-            this.gasto.borrarEtiquetas(...this.gasto.etiquetas);
             this.gasto.anyadirEtiquetas(...eticqForm);
             
         let Link = "https://suhhtqjccd.execute-api.eu-west-1.amazonaws.com/latest/";
