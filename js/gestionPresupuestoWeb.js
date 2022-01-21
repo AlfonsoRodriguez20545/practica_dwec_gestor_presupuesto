@@ -117,7 +117,55 @@ function mostrarGastosAgrupadosWeb(idElemento, agrup, periodo) {
       <h1>Gastos agrupados por ${periodo}</h1>
       ${datos}
   `
-
+  Elemen.style.width = "33%";
+  Elemen.style.display = "inline-block";
+let chart = document.createElement("canvas");
+let unit = "";
+switch (periodo) {
+case "anyo":
+    unit = "year";
+    break;
+case "mes":
+    unit = "month";
+    break;
+case "dia":
+default:
+    unit = "day";
+    break;
+}
+const myChart = new Chart(chart.getContext("2d"), {
+    type: 'bar',
+    data: {
+        datasets: [
+            {
+                // Título de la gráfica
+                label: `Gastos por ${periodo}`,
+                // Color de fondo
+                backgroundColor: "#555555",
+                // Datos de la gráfica
+                // "agrup" contiene los datos a representar. Es uno de los parámetros de la función "mostrarGastosAgrupadosWeb".
+                data: agrup
+            }
+        ],
+    },
+    options: {
+        scales: {
+            x: {
+                // El eje X es de tipo temporal
+                type: 'time',
+                time: {
+                    // Indicamos la unidad correspondiente en función de si utilizamos días, meses o años
+                    unit: unit
+                }
+            },
+            y: {
+                // Para que el eje Y empieza en 0
+                beginAtZero: true
+            }
+        }
+    }
+});
+Elemen.append(chart);
 }
 function repintar() {
     document.getElementById("presupuesto").innerHTML="";
